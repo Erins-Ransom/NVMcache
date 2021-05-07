@@ -18,7 +18,9 @@ void item_free(item *it);
 bool item_size_ok(const size_t nkey, const int flags, const int nbytes);
 
 int  do_item_link(item *it, const uint32_t hv);     /** may fail if transgresses limits */
+void item_link_q(item *it);
 void do_item_unlink(item *it, const uint32_t hv);
+void item_unlink_q(item *it);
 void do_item_unlink_nolock(item *it, const uint32_t hv);
 void do_item_remove(item *it);
 void do_item_update(item *it);   /** update LRU time to current and reposition */
