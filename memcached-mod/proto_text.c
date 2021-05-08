@@ -7,6 +7,7 @@
 #include "proto_text.h"
 #include "authfile.h"
 #include "storage.h"
+#include "slabs.h"
 #ifdef TLS
 #include "tls.h"
 #endif
@@ -2681,6 +2682,13 @@ static void process_command(conn *c, char *command) {
 
             WANT_TOKENS_OR(ntokens, 4, 5);
             process_touch_command(c, tokens, ntokens);
+        } else {
+            out_string(c, "ERROR");
+        }
+    } else if (first == 'r') {
+        if (strcmp(tokens[COMMAND_TOKEN].value, "repair_lru") == 0) {
+            repair_lru();
+            out_string(c, "REPAIRED");
         } else {
             out_string(c, "ERROR");
         }

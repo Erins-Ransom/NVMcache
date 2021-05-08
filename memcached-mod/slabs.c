@@ -9,6 +9,7 @@
  */
 #include "memcached.h"
 #include "storage.h"
+#include "items.h"
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
@@ -22,6 +23,7 @@
 #include <signal.h>
 #include <assert.h>
 #include <pthread.h>
+#include <time.h>
 
 //#define DEBUG_SLAB_MOVER
 /* powers-of-N allocation structures */
@@ -1407,10 +1409,10 @@ static void merge_sort(int i, int j, int id, rel_time_t * aux1, item ** aux2) {
 }
 
 
-
 void repair_lru(void) {
     void * ptr;
     item * it;
+    clock_t begin = clock();
     for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
         for (int i=0; i<slabclass[id].slabs; i++) {
             ptr = slabclass[id].slab_list[i];
@@ -1433,8 +1435,14 @@ void repair_lru(void) {
     item ** aux2 = malloc(sizeof(item *)*max_count);
     for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
         merge_sort(0, count[id], id, aux1 ,aux2);
-        for (int j=0; j<count[id]; j++) {
+        for (int j=count[id]-1; j>=0; j++) {
             item_link_q(items[j]);
         }
     }
+    free(aux1);
+    free(aux2);
+    double dur_in_sec = (double) begin - clock();
+    FILE * fp = fopen("repair_log.txt", "a");
+    fprintf(fp, "%f\n", dur_in_sec);
+    fclose(fp);
 }
