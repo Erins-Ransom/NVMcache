@@ -1363,8 +1363,8 @@ static void add_item( item * it, int id ) {
         items[id] = realloc(items[id], sizeof(item *)*budget[id]);
         times[id] = realloc(times[id], sizeof(rel_time_t)*budget[id]);
     }
-    items[count[id]] = it;
-    times[count[id]] = it->time;
+    items[id][count[id]] = it;
+    times[id][count[id]] = it->time;
     count[id]++;
 }
 
@@ -1410,19 +1410,19 @@ static void merge_sort(int i, int j, int id, rel_time_t * aux1, item ** aux2) {
 
 
 void repair_lru(void) {
-    void * ptr;
+    char * ptr;
     item * it;
     clock_t begin = clock();
     for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
         for (int i=0; i<slabclass[id].slabs; i++) {
             ptr = slabclass[id].slab_list[i];
             for (int j=0; j<slabclass[id].perslab; j++) {
-                item * it = (item*) ptr;
+                it = (item*) ptr;
                 if ((it->it_flags & ITEM_SLABBED) == 0) {
                     add_item(it, id);
-                    unlink_item_q(it);
+                    item_unlink_q(it);
                 }
-                ptr += slabclass[id].size;
+                ptr = ptr + slabclass[id].size;
             }
         }
     }
@@ -1436,7 +1436,7 @@ void repair_lru(void) {
     for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
         merge_sort(0, count[id], id, aux1 ,aux2);
         for (int j=count[id]-1; j>=0; j++) {
-            item_link_q(items[j]);
+            item_link_q(items[id][j]);
         }
     }
     free(aux1);

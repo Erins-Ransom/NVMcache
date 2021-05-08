@@ -1,3 +1,6 @@
+#ifndef ITEM_H
+#define ITEM_H
+
 #define HOT_LRU 0
 #define WARM_LRU 64
 #define COLD_LRU 128
@@ -86,3 +89,5 @@ void lru_maintainer_pause(void);
 void lru_maintainer_resume(void);
 
 void *lru_bump_buf_create(void);
+
+#endif
