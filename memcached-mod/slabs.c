@@ -1351,7 +1351,7 @@ rel_time_t * times[MAX_NUMBER_OF_SLAB_CLASSES];
 size_t count[MAX_NUMBER_OF_SLAB_CLASSES];
 size_t budget[MAX_NUMBER_OF_SLAB_CLASSES];
 
-void add_item( item * it, int id ) {
+static void add_item( item * it, int id ) {
     if (!budget[id]) {
         budget[id] = 1024;
         items[id] = malloc(sizeof(item *)*budget[id]);
@@ -1366,7 +1366,7 @@ void add_item( item * it, int id ) {
     count[id]++;
 }
 
-void merge_sort(int i, int j, int id, rel_time_t * aux1, item ** aux2) {
+static void merge_sort(int i, int j, int id, rel_time_t * aux1, item ** aux2) {
     if (j <= i) {
         return;     // the subsection is empty or a single element
     }
@@ -1408,7 +1408,7 @@ void merge_sort(int i, int j, int id, rel_time_t * aux1, item ** aux2) {
 
 
 
-void repair_lru(const unsigned int slabs_clsid) {
+void repair_lru(void) {
     void * ptr;
     item * it;
     for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
@@ -1420,6 +1420,7 @@ void repair_lru(const unsigned int slabs_clsid) {
                     add_item(it, id);
                     unlink_item_q(it);
                 }
+                ptr += slabclass[id].size;
             }
         }
     }
