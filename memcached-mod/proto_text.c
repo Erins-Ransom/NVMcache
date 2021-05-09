@@ -13,6 +13,8 @@
 #endif
 #include <string.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 static void process_command(conn *c, char *command);
 
@@ -2687,7 +2689,12 @@ static void process_command(conn *c, char *command) {
         }
     } else if (first == 'r') {
         if (strcmp(tokens[COMMAND_TOKEN].value, "repair_lru") == 0) {
-            repair_lru();
+            double time = repair_lru();
+            char buff[32]; 
+            sprintf(buff, "%f\n", time);
+            int file = open("lru_times.txt", O_WRONLY | O_APPEND);
+            write(file, buff, strlen(buff));
+            close(file);
             out_string(c, "REPAIRED");
         } else {
             out_string(c, "ERROR");

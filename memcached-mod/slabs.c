@@ -1409,7 +1409,7 @@ static void merge_sort(int i, int j, int id, rel_time_t * aux1, item ** aux2) {
 }
 
 
-void repair_lru(void) {
+double repair_lru(void) {
     char * ptr;
     item * it;
     clock_t begin = clock();
@@ -1443,8 +1443,14 @@ void repair_lru(void) {
     }
     free(aux1);
     free(aux2);
-    double dur_in_sec = (double) (clock() - begin) / CLOCKS_PER_SEC;
-    FILE * fp = fopen("repair_log.txt", "a");
-    fprintf(fp, "%f\n", dur_in_sec);
-    fclose(fp);
+    double dur_in_sec = ((double) (clock() - begin)) / CLOCKS_PER_SEC;
+    return dur_in_sec;
+    // FILE * fp = fopen("repair_log.txt", "a");
+    // if (fp == NULL) {
+    //     perror("fopen()");
+    //     printf("Time to repair LRU: %f", dur_in_sec);
+    //     return; 
+    // }
+    // fprintf(fp, "%f\n", dur_in_sec);
+    // fclose(fp);
 }
