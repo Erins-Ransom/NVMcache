@@ -1,3 +1,6 @@
+#ifndef ITEM_H
+#define ITEM_H
+
 #define HOT_LRU 0
 #define WARM_LRU 64
 #define COLD_LRU 128
@@ -18,7 +21,9 @@ void item_free(item *it);
 bool item_size_ok(const size_t nkey, const int flags, const int nbytes);
 
 int  do_item_link(item *it, const uint32_t hv);     /** may fail if transgresses limits */
+void item_link_q(item *it);
 void do_item_unlink(item *it, const uint32_t hv);
+void item_unlink_q(item *it);
 void do_item_unlink_nolock(item *it, const uint32_t hv);
 void do_item_remove(item *it);
 void do_item_update(item *it);   /** update LRU time to current and reposition */
@@ -84,3 +89,5 @@ void lru_maintainer_pause(void);
 void lru_maintainer_resume(void);
 
 void *lru_bump_buf_create(void);
+
+#endif

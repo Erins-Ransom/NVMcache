@@ -22,8 +22,8 @@
 #include <poll.h>
 
 /* Forward Declarations */
-static void item_link_q(item *it);
-static void item_unlink_q(item *it);
+// static void item_link_q(item *it);
+// static void item_unlink_q(item *it);
 
 static unsigned int lru_type_map[4] = {HOT_LRU, WARM_LRU, COLD_LRU, TEMP_LRU};
 
@@ -430,7 +430,8 @@ static void do_item_link_q(item *it) { /* item is the new head */
     return;
 }
 
-static void item_link_q(item *it) {
+// static void item_link_q(item *it) {
+void item_link_q(item *it) {
     pthread_mutex_lock(&lru_locks[it->slabs_clsid]);
     do_item_link_q(it);
     pthread_mutex_unlock(&lru_locks[it->slabs_clsid]);
@@ -475,7 +476,8 @@ static void do_item_unlink_q(item *it) {
     return;
 }
 
-static void item_unlink_q(item *it) {
+// static void item_unlink_q(item *it) {
+void item_unlink_q(item *it) {
     pthread_mutex_lock(&lru_locks[it->slabs_clsid]);
     do_item_unlink_q(it);
     pthread_mutex_unlock(&lru_locks[it->slabs_clsid]);

@@ -2,6 +2,8 @@
 #ifndef SLABS_H
 #define SLABS_H
 
+void repair_lru(void);
+
 /** Init the subsystem. 1st argument is the limit on no. of bytes to allocate,
     0 if no limit. 2nd argument is the growth factor; each slab will use a chunk
     size equal to the previous slab's chunk size times this factor.
