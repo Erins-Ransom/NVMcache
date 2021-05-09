@@ -1436,7 +1436,7 @@ void repair_lru(void) {
     for (int id=POWER_SMALLEST; id<power_largest; id++) {
         if (count[id]) {
             merge_sort(0, count[id]-1, id, aux1 ,aux2);
-            for (int j=count[id]-1; j>=0; j++) {
+            for (int j=count[id]-1; j>=0; j--) {
                 item_link_q(items[id][j]);
             }
         }
