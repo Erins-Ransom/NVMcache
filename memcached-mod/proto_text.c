@@ -2693,7 +2693,7 @@ static void process_command(conn *c, char *command) {
             char buff[32]; 
             sprintf(buff, "%f\n", time);
             int file = open("lru_times.txt", O_WRONLY | O_APPEND);
-            write(file, buff, strlen(buff));
+            int written = write(file, buff, strlen(buff)); 
             close(file);
             out_string(c, "REPAIRED");
         } else {
