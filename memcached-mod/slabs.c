@@ -1413,7 +1413,7 @@ void repair_lru(void) {
     char * ptr;
     item * it;
     clock_t begin = clock();
-    for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
+    for (int id=POWER_SMALLEST; id<power_largest; id++) {
         for (int i=0; i<slabclass[id].slabs; i++) {
             ptr = slabclass[id].slab_list[i];
             for (int j=0; j<slabclass[id].perslab; j++) {
