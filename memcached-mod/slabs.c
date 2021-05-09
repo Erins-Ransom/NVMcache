@@ -1435,7 +1435,7 @@ void repair_lru(void) {
     item ** aux2 = malloc(sizeof(item *)*max_count);
     for (int id=POWER_SMALLEST; id<power_largest; id++) {
         if (count[id]) {
-            merge_sort(0, count[id], id, aux1 ,aux2);
+            merge_sort(0, count[id]-1, id, aux1 ,aux2);
             for (int j=count[id]-1; j>=0; j++) {
                 item_link_q(items[id][j]);
             }
