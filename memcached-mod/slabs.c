@@ -1428,15 +1428,17 @@ void repair_lru(void) {
     }
 
     int max_count = count[0];
-    for (int i=0; i<MAX_NUMBER_OF_SLAB_CLASSES; i++) {
+    for (int i=POWER_SMALLEST; i<power_largest; i++) {
         if (count[i] > max_count) max_count = count[i];
     }
     rel_time_t * aux1 = malloc(sizeof(rel_time_t)*max_count);
     item ** aux2 = malloc(sizeof(item *)*max_count);
-    for (int id=0; id<MAX_NUMBER_OF_SLAB_CLASSES; id++) {
-        merge_sort(0, count[id], id, aux1 ,aux2);
-        for (int j=count[id]-1; j>=0; j++) {
-            item_link_q(items[id][j]);
+    for (int id=POWER_SMALLEST; id<power_largest; id++) {
+        if (count[id]) {
+            merge_sort(0, count[id], id, aux1 ,aux2);
+            for (int j=count[id]-1; j>=0; j++) {
+                item_link_q(items[id][j]);
+            }
         }
     }
     free(aux1);
