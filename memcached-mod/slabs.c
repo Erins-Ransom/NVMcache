@@ -1443,7 +1443,7 @@ void repair_lru(void) {
     }
     free(aux1);
     free(aux2);
-    double dur_in_sec = (double) begin - clock();
+    double dur_in_sec = (double) (clock() - begin) / CLOCKS_PER_SEC;
     FILE * fp = fopen("repair_log.txt", "a");
     fprintf(fp, "%f\n", dur_in_sec);
     fclose(fp);
