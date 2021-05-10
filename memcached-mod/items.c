@@ -415,7 +415,15 @@ static void do_item_link_q(item *it) { /* item is the new head */
     it->next = *head;
     if (it->next) it->next->prev = it;
     *head = it;
-    if (*tail == 0) *tail = it;
+    #ifdef CLFLUSH
+    _mm_clflush(head);
+    #endif
+    if (*tail == 0) {
+        *tail = it;
+        #ifdef CLFLUSH
+        _mm_clflush(tail);
+        #endif
+    }
     sizes[it->slabs_clsid]++;
 #ifdef EXTSTORE
     if (it->it_flags & ITEM_HDR) {
@@ -452,6 +460,7 @@ static void do_item_unlink_q(item *it) {
     if (*head == it) {
         assert(it->prev == 0);
         *head = it->next;
+
     }
     if (*tail == it) {
         assert(it->next == 0);
@@ -460,8 +469,18 @@ static void do_item_unlink_q(item *it) {
     assert(it->next != it);
     assert(it->prev != it);
 
-    if (it->next) it->next->prev = it->prev;
-    if (it->prev) it->prev->next = it->next;
+    if (it->next) {
+        it->next->prev = it->prev;
+        #ifdef CLFLUSH
+        _mm_clflush(&it->next->prev);
+        #endif
+    }
+    if (it->prev) {
+        it->prev->next = it->next;
+        #ifdef CLFLUSH
+        _mm_clflush(&it->prev->next);
+        #endif
+    }
     sizes[it->slabs_clsid]--;
 #ifdef EXTSTORE
     if (it->it_flags & ITEM_HDR) {
