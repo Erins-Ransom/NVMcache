@@ -2691,11 +2691,19 @@ static void process_command(conn *c, char *command) {
         if (strcmp(tokens[COMMAND_TOKEN].value, "repair_lru") == 0) {
             double time = repair_lru();
             char buff[32]; 
-            sprintf(buff, "%f\n", time);
+            snprintf(buff, 32, "%f\n", time);
+            int len = strlen(buff);
             int file = open("lru_times.txt", O_WRONLY | O_APPEND);
-            int written = write(file, buff, strlen(buff)); 
-            close(file);
-            out_string(c, "REPAIRED");
+            int written = 0; 
+            if (file) {
+                written = write(file, buff, len); 
+                close(file);
+            }
+            if (!file || written != len) {
+                out_string(c, "ERROR LOGGING TIME");
+            } else {
+                out_string(c, "REPAIRED");
+            }
         } else {
             out_string(c, "ERROR");
         }
