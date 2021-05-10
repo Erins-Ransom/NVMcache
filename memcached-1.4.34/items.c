@@ -14,6 +14,10 @@
 #include <assert.h>
 #include <unistd.h>
 #include <poll.h>
+#include <emmintrin.h>
+
+// define for cache flushes on LRU
+#define CLFUSH 1
 
 /* Forward Declarations */
 static void item_link_q(item *it);
@@ -304,9 +308,25 @@ static void do_item_link_q(item *it) { /* item is the new head */
     assert((*head && *tail) || (*head == 0 && *tail == 0));
     it->prev = 0;
     it->next = *head;
-    if (it->next) it->next->prev = it;
+    if (it->next) {
+        it->next->prev = it;
+        #ifdef CLFLUSH
+        _mm_clflush(&it->next->prev);;
+        _mm_sfence();
+        #endif
+    }
     *head = it;
-    if (*tail == 0) *tail = it;
+    #ifdef CLFLUSH
+    _mm_clflush(head);
+    _mm_sfence();
+    #endif
+    if (*tail == 0) {
+        *tail = it;
+        #ifdef CLFLUSH
+        _mm_clflush(tail);
+        _mm_sfence();
+        #endif
+    }
     sizes[it->slabs_clsid]++;
     sizes_bytes[it->slabs_clsid] += ITEM_ntotal(it);
     return;
@@ -326,16 +346,36 @@ static void do_item_unlink_q(item *it) {
     if (*head == it) {
         assert(it->prev == 0);
         *head = it->next;
+        #ifdef CLFLUSH
+        _mm_clflush(head);
+        _mm_sfence();
+        #endif
     }
     if (*tail == it) {
         assert(it->next == 0);
         *tail = it->prev;
+        #ifdef CLFLUSH
+        _mm_clflush(tail);
+        _mm_sfence();
+        #endif
     }
     assert(it->next != it);
     assert(it->prev != it);
 
-    if (it->next) it->next->prev = it->prev;
-    if (it->prev) it->prev->next = it->next;
+    if (it->next) {
+        it->next->prev = it->prev;
+        #ifdef CLFLUSH
+        _mm_clflush(&it->next->prev);
+        _mm_sfence();
+        #endif
+    }
+    if (it->prev) { 
+        it->prev->next = it->next;
+        #ifdef CLFLUSH
+        _mm_clflush(&it->prev->next);
+        _mm_sfence();
+        #endif
+    }
     sizes[it->slabs_clsid]--;
     sizes_bytes[it->slabs_clsid] -= ITEM_ntotal(it);
     return;
