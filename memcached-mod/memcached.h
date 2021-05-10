@@ -9,6 +9,8 @@
 #include "config.h"
 #endif
 
+#include <emmintrin.h>
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/time.h>
@@ -50,6 +52,9 @@
 #ifdef TLS
 #include <openssl/ssl.h>
 #endif
+
+// Define for cache flushes on LRU
+#define CLFLUSH 1
 
 /* for NAPI pinning feature */
 #ifndef SO_INCOMING_NAPI_ID
