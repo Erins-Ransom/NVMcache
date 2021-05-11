@@ -418,7 +418,7 @@ static void do_item_link_q(item *it) { /* item is the new head */
     if (junk) {
         junk = -1;
     }
-    for (int i=0; i<1024; i++) {
+    for (int i=0; i<1024*4; i++) {
         int random = rand();
         if (random%2) {
             junk += random;
@@ -496,7 +496,7 @@ static void do_item_unlink_q(item *it) {
     if (junk) {
         junk = -1;
     }
-    for (int i=0; i<1024; i++) {
+    for (int i=0; i<1024*4; i++) {
         int random = rand();
         if (random%2) {
             junk += random;
