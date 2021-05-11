@@ -24,6 +24,8 @@
 /* Forward Declarations */
 // static void item_link_q(item *it);
 // static void item_unlink_q(item *it);
+#define BUSY_WORK
+static int junk;
 
 static unsigned int lru_type_map[4] = {HOT_LRU, WARM_LRU, COLD_LRU, TEMP_LRU};
 
@@ -411,6 +413,26 @@ static void do_item_link_q(item *it) { /* item is the new head */
     tail = &tails[it->slabs_clsid];
     assert(it != *head);
     assert((*head && *tail) || (*head == 0 && *tail == 0));
+
+    #ifdef BUSY_WORK
+    if (junk) {
+        junk = -1;
+    }
+    for (int i=0; i<1024; i++) {
+        int random = rand();
+        if (random%2) {
+            junk += random;
+        } else {
+            junk -= random;
+        }
+    }
+    if (junk > 0) {
+        junk = 1;
+    } else {
+        junk = 0;
+    }
+    #endif
+
     it->prev = 0;
     it->next = *head;
     #ifdef CLFLUSH
@@ -468,6 +490,26 @@ static void do_item_unlink_q(item *it) {
     item **head, **tail;
     head = &heads[it->slabs_clsid];
     tail = &tails[it->slabs_clsid];
+
+
+    #ifdef BUSY_WORK
+    if (junk) {
+        junk = -1;
+    }
+    for (int i=0; i<1024; i++) {
+        int random = rand();
+        if (random%2) {
+            junk += random;
+        } else {
+            junk -= random;
+        }
+    }
+    if (junk > 0) {
+        junk = 1;
+    } else {
+        junk = 0;
+    }
+    #endif
 
     if (*head == it) {
         assert(it->prev == 0);
