@@ -17,7 +17,7 @@
 #include <emmintrin.h>
 
 // define for cache flushes on LRU
-#define CLFUSH 1
+#define CLFLUSH 1
 
 /* Forward Declarations */
 static void item_link_q(item *it);
@@ -308,23 +308,27 @@ static void do_item_link_q(item *it) { /* item is the new head */
     assert((*head && *tail) || (*head == 0 && *tail == 0));
     it->prev = 0;
     it->next = *head;
+    #ifdef CLFLUSH
+    _mm_clflush(&it->next);
+    _mm_mfence();
+    #endif
     if (it->next) {
         it->next->prev = it;
         #ifdef CLFLUSH
         _mm_clflush(&it->next->prev);;
-        _mm_sfence();
+        _mm_mfence();
         #endif
     }
     *head = it;
     #ifdef CLFLUSH
     _mm_clflush(head);
-    _mm_sfence();
+    _mm_mfence();
     #endif
     if (*tail == 0) {
         *tail = it;
         #ifdef CLFLUSH
         _mm_clflush(tail);
-        _mm_sfence();
+        _mm_mfence();
         #endif
     }
     sizes[it->slabs_clsid]++;
@@ -348,7 +352,7 @@ static void do_item_unlink_q(item *it) {
         *head = it->next;
         #ifdef CLFLUSH
         _mm_clflush(head);
-        _mm_sfence();
+        _mm_mfence();
         #endif
     }
     if (*tail == it) {
@@ -356,7 +360,7 @@ static void do_item_unlink_q(item *it) {
         *tail = it->prev;
         #ifdef CLFLUSH
         _mm_clflush(tail);
-        _mm_sfence();
+        _mm_mfence();
         #endif
     }
     assert(it->next != it);
@@ -366,14 +370,14 @@ static void do_item_unlink_q(item *it) {
         it->next->prev = it->prev;
         #ifdef CLFLUSH
         _mm_clflush(&it->next->prev);
-        _mm_sfence();
+        _mm_mfence();
         #endif
     }
     if (it->prev) { 
         it->prev->next = it->next;
         #ifdef CLFLUSH
         _mm_clflush(&it->prev->next);
-        _mm_sfence();
+        _mm_mfence();
         #endif
     }
     sizes[it->slabs_clsid]--;
