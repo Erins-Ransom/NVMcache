@@ -152,13 +152,13 @@ MANS = $(man_MANS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/cs261/NVMcache/memcached-1.4.34/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/cs261/NVMcache/memcached-1.4.34/missing autoconf
-AUTOHEADER = ${SHELL} /home/cs261/NVMcache/memcached-1.4.34/missing autoheader
-AUTOMAKE = ${SHELL} /home/cs261/NVMcache/memcached-1.4.34/missing automake-1.15
-AWK = mawk
+AUTOCONF = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing autoconf
+AUTOHEADER = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing autoheader
+AUTOMAKE = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing automake-1.15
+AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2 -pthread -pthread -Wall -Werror -pedantic -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls
@@ -172,10 +172,10 @@ DTRACEFLAGS =
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
-EGREP = /usr/bin/grep -E
+EGREP = /bin/grep -E
 ENABLE_SASL = 
 EXEEXT = 
-GREP = /usr/bin/grep
+GREP = /bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -185,8 +185,8 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = -levent 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/cs261/NVMcache/memcached-1.4.34/missing makeinfo
-MKDIR_P = /usr/bin/mkdir -p
+MAKEINFO = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing makeinfo
+MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = memcached
 PACKAGE_BUGREPORT = memcached@googlegroups.com
@@ -203,12 +203,12 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.4.34
-XML2RFC = no
+XML2RFC = /usr/bin/xml2rfc
 XSLTPROC = no
-abs_builddir = /home/cs261/NVMcache/memcached-1.4.34/doc
-abs_srcdir = /home/cs261/NVMcache/memcached-1.4.34/doc
-abs_top_builddir = /home/cs261/NVMcache/memcached-1.4.34
-abs_top_srcdir = /home/cs261/NVMcache/memcached-1.4.34
+abs_builddir = /home/dormando/d/p/danga/git/memcached/doc
+abs_srcdir = /home/dormando/d/p/danga/git/memcached/doc
+abs_top_builddir = /home/dormando/d/p/danga/git/memcached
+abs_top_srcdir = /home/dormando/d/p/danga/git/memcached
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -235,7 +235,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/cs261/NVMcache/memcached-1.4.34/install-sh
+install_sh = ${SHELL} /home/dormando/d/p/danga/git/memcached/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -500,10 +500,10 @@ uninstall-man: uninstall-man1
 
 
 protocol-binary.txt: protocol-binary.full
-	no -c /home/cs261/NVMcache/memcached-1.4.34/doc protocol-binary.full $@
+	/usr/bin/xml2rfc -c /home/dormando/d/p/danga/git/memcached/doc protocol-binary.full $@
 
 protocol-binary-range.txt: protocol-binary-range.full
-	no -c /home/cs261/NVMcache/memcached-1.4.34/doc protocol-binary-range.full $@
+	/usr/bin/xml2rfc -c /home/dormando/d/p/danga/git/memcached/doc protocol-binary-range.full $@
 
 protocol-binary.full: protocol-binary.xml xml2rfc/rfc2629-noinc.xsl
 	no --nonet xml2rfc/rfc2629-noinc.xsl protocol-binary.xml > $@
