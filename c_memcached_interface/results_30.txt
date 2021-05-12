@@ -1,0 +1,48 @@
+/home/cs261/NVMcache/memcached-1.4.34/memcached-base
+running
+Warmup
+Run time: 30.0s Ops: 4441080 TPS: 148025 Net_rate: 23.9M/s
+Benchmark
+Run time: 60.0s Ops: 8729679 TPS: 145483 Net_rate: 23.5M/s
+
+---------------------------------------
+/home/cs261/NVMcache/memcached-1.4.34/memcached-busy
+running
+Warmup
+Run time: 30.0s Ops: 668283 TPS: 22274 Net_rate: 3.6M/s
+Benchmark
+Run time: 60.0s Ops: 1355697 TPS: 22593 Net_rate: 3.6M/s
+
+---------------------------------------
+/home/cs261/NVMcache/memcached-1.4.34/memcached-clflush
+running
+Warmup
+Run time: 30.0s Ops: 4345828 TPS: 144849 Net_rate: 23.4M/s
+Benchmark
+Run time: 60.0s Ops: 8685982 TPS: 144756 Net_rate: 23.4M/s
+
+---------------------------------------
+/home/cs261/NVMcache/memcached-mod/memcached-base
+running
+Warmup
+Run time: 30.0s Ops: 4219819 TPS: 140650 Net_rate: 22.7M/s
+Benchmark
+Run time: 60.0s Ops: 8346858 TPS: 139104 Net_rate: 22.4M/s
+
+---------------------------------------
+/home/cs261/NVMcache/memcached-mod/memcached-busy
+running
+Warmup
+Run time: 30.0s Ops: 189476 TPS: 6315 Net_rate: 1.0M/s
+Benchmark
+Run time: 60.0s Ops: 394918 TPS: 6581 Net_rate: 1.1M/s
+
+---------------------------------------
+/home/cs261/NVMcache/memcached-mod/memcached-clflush
+running
+Warmup
+Run time: 30.0s Ops: 4274051 TPS: 142458 Net_rate: 23.0M/s
+Benchmark
+Run time: 60.0s Ops: 8566069 TPS: 142757 Net_rate: 23.0M/s
+
+---------------------------------------

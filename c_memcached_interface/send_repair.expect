@@ -1,0 +1,6 @@
+#!/usr/bin/expect
+
+spawn telnet localhost 11211
+send "repair_lru\r"
+expect "REPAIRED\r"
+send "quit\r"
