@@ -87,8 +87,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
 host_triplet = x86_64-pc-linux-gnu
-am__append_1 = $(SPECIFICATIONS)
-am__append_2 = $(SPECIFICATIONS)
+#am__append_1 = $(SPECIFICATIONS)
+#am__append_2 = $(SPECIFICATIONS)
 subdir = doc
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/version.m4 \
@@ -153,13 +153,13 @@ MANS = $(man_MANS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing aclocal-1.16
+ACLOCAL = ${SHELL} /home/cs261/NVMcache/memcached-mod/missing aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing autoconf
-AUTOHEADER = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing autoheader
-AUTOMAKE = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing automake-1.16
-AWK = gawk
+AUTOCONF = ${SHELL} /home/cs261/NVMcache/memcached-mod/missing autoconf
+AUTOHEADER = ${SHELL} /home/cs261/NVMcache/memcached-mod/missing autoheader
+AUTOMAKE = ${SHELL} /home/cs261/NVMcache/memcached-mod/missing automake-1.16
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2 -pthread -pthread -Wall -Werror -pedantic -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls
@@ -173,10 +173,10 @@ DTRACEFLAGS =
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
-EGREP = /bin/grep -E
+EGREP = /usr/bin/grep -E
 ENABLE_SASL = 
 EXEEXT = 
-GREP = /bin/grep
+GREP = /usr/bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -186,8 +186,8 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = -levent 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/dormando/d/p/danga/git/memcached/missing makeinfo
-MKDIR_P = /bin/mkdir -p
+MAKEINFO = ${SHELL} /home/cs261/NVMcache/memcached-mod/missing makeinfo
+MKDIR_P = /usr/bin/mkdir -p
 OBJEXT = o
 PACKAGE = memcached
 PACKAGE_BUGREPORT = memcached@googlegroups.com
@@ -204,12 +204,12 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.6.9
-XML2RFC = /usr/bin/xml2rfc
-XSLTPROC = /usr/bin/xsltproc
-abs_builddir = /home/dormando/d/p/danga/git/memcached/doc
-abs_srcdir = /home/dormando/d/p/danga/git/memcached/doc
-abs_top_builddir = /home/dormando/d/p/danga/git/memcached
-abs_top_srcdir = /home/dormando/d/p/danga/git/memcached
+XML2RFC = no
+XSLTPROC = no
+abs_builddir = /home/cs261/NVMcache/memcached-mod/doc
+abs_srcdir = /home/cs261/NVMcache/memcached-mod/doc
+abs_top_builddir = /home/cs261/NVMcache/memcached-mod
+abs_top_srcdir = /home/cs261/NVMcache/memcached-mod
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -236,7 +236,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/dormando/d/p/danga/git/memcached/install-sh
+install_sh = ${SHELL} /home/cs261/NVMcache/memcached-mod/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -510,10 +510,10 @@ uninstall-man: uninstall-man1
 
 
 %.txt: %.full $(RFC2629_DTD)
-	/usr/bin/xml2rfc -d $(RFC2629_DTD) -c $(builddir) $< $@
+	no -d $(RFC2629_DTD) -c $(builddir) $< $@
 
 %.full: %.xml $(RFC2629_XSL)
-	/usr/bin/xsltproc --nonet $(RFC2629_XSL) $< > $@
+	no --nonet $(RFC2629_XSL) $< > $@
 
 # Prevent make from deleting intermediate files
 all-full: $(SPECIFICATIONS:.txt=.full)

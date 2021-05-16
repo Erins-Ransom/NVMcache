@@ -151,7 +151,11 @@ memcached-items.o: items.c /usr/include/stdc-predef.h memcached.h \
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
  /usr/include/poll.h /usr/include/x86_64-linux-gnu/sys/poll.h \
  /usr/include/x86_64-linux-gnu/bits/poll.h \
- /usr/include/x86_64-linux-gnu/bits/poll2.h
+ /usr/include/x86_64-linux-gnu/bits/poll2.h \
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/mm_malloc.h
 
 /usr/include/stdc-predef.h:
 
@@ -550,3 +554,11 @@ util.h:
 /usr/include/x86_64-linux-gnu/bits/poll.h:
 
 /usr/include/x86_64-linux-gnu/bits/poll2.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/9/include/emmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/9/include/xmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/9/include/mmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/9/include/mm_malloc.h:

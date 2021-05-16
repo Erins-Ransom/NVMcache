@@ -54,7 +54,7 @@
 #endif
 
 // Define for cache flushes on LRU
-#define CLFLUSH 1
+// #define CLFLUSH 1
 
 /* for NAPI pinning feature */
 #ifndef SO_INCOMING_NAPI_ID

@@ -25,7 +25,11 @@
 // static void item_link_q(item *it);
 // static void item_unlink_q(item *it);
 #define BUSY_WORK
+#define CLFLUSH
+
+#ifdef BUSY_WORK
 static int junk;
+#endif
 
 static unsigned int lru_type_map[4] = {HOT_LRU, WARM_LRU, COLD_LRU, TEMP_LRU};
 

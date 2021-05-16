@@ -2693,13 +2693,13 @@ static void process_command(conn *c, char *command) {
             char buff[32]; 
             snprintf(buff, 32, "%f\n", time);
             int len = strlen(buff);
-            int file = open("lru_times.txt", O_WRONLY | O_APPEND);
+            int file = open("/home/cs261/NVMcache/lru_times.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
             int written = 0; 
-            if (file) {
+            if (file != -1) {
                 written = write(file, buff, len); 
                 close(file);
             }
-            if (!file || written != len) {
+            if (file == -1 || written != len) {
                 out_string(c, "ERROR LOGGING TIME");
             } else {
                 out_string(c, "REPAIRED");

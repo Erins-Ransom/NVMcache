@@ -1358,7 +1358,7 @@ static void add_item( item * it, int id ) {
         budget[id] = 1024;
         items[id] = malloc(sizeof(item *)*budget[id]);
         times[id] = malloc(sizeof(rel_time_t)*budget[id]);
-    } else if (count == budget) {
+    } else if (count[id] >= budget[id]) {
         budget[id] *= 2;
         items[id] = realloc(items[id], sizeof(item *)*budget[id]);
         times[id] = realloc(times[id], sizeof(rel_time_t)*budget[id]);

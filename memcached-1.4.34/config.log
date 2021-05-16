@@ -342,99 +342,14 @@ configure:4629: $? = 0
 configure:4642: result: none needed
 configure:4683: checking sasl/sasl.h usability
 configure:4683: gcc -c -g -O2 -pthread  conftest.c >&5
-conftest.c:54:10: fatal error: sasl/sasl.h: No such file or directory
-   54 | #include <sasl/sasl.h>
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-configure:4683: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "memcached"
-| #define PACKAGE_TARNAME "memcached"
-| #define PACKAGE_VERSION "1.4.34"
-| #define PACKAGE_STRING "memcached 1.4.34"
-| #define PACKAGE_BUGREPORT "memcached@googlegroups.com"
-| #define PACKAGE_URL ""
-| #define PACKAGE "memcached"
-| #define VERSION "1.4.34"
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| /* end confdefs.h.  */
-| #include <stdio.h>
-| #ifdef HAVE_SYS_TYPES_H
-| # include <sys/types.h>
-| #endif
-| #ifdef HAVE_SYS_STAT_H
-| # include <sys/stat.h>
-| #endif
-| #ifdef STDC_HEADERS
-| # include <stdlib.h>
-| # include <stddef.h>
-| #else
-| # ifdef HAVE_STDLIB_H
-| #  include <stdlib.h>
-| # endif
-| #endif
-| #ifdef HAVE_STRING_H
-| # if !defined STDC_HEADERS && defined HAVE_MEMORY_H
-| #  include <memory.h>
-| # endif
-| # include <string.h>
-| #endif
-| #ifdef HAVE_STRINGS_H
-| # include <strings.h>
-| #endif
-| #ifdef HAVE_INTTYPES_H
-| # include <inttypes.h>
-| #endif
-| #ifdef HAVE_STDINT_H
-| # include <stdint.h>
-| #endif
-| #ifdef HAVE_UNISTD_H
-| # include <unistd.h>
-| #endif
-| #include <sasl/sasl.h>
-configure:4683: result: no
+configure:4683: $? = 0
+configure:4683: result: yes
 configure:4683: checking sasl/sasl.h presence
 configure:4683: gcc -E  conftest.c
-conftest.c:21:10: fatal error: sasl/sasl.h: No such file or directory
-   21 | #include <sasl/sasl.h>
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-configure:4683: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "memcached"
-| #define PACKAGE_TARNAME "memcached"
-| #define PACKAGE_VERSION "1.4.34"
-| #define PACKAGE_STRING "memcached 1.4.34"
-| #define PACKAGE_BUGREPORT "memcached@googlegroups.com"
-| #define PACKAGE_URL ""
-| #define PACKAGE "memcached"
-| #define VERSION "1.4.34"
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| /* end confdefs.h.  */
-| #include <sasl/sasl.h>
-configure:4683: result: no
+configure:4683: $? = 0
+configure:4683: result: yes
 configure:4683: checking for sasl/sasl.h
-configure:4683: result: no
+configure:4683: result: yes
 configure:4913: checking for gcov
 configure:4931: found /usr/bin/gcov
 configure:4944: result: /usr/bin/gcov
@@ -460,8 +375,8 @@ configure:5372: $? = 0
 configure:5408: result: (system)
 configure:5427: checking for library containing umem_cache_create
 configure:5458: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
-/usr/bin/ld: /tmp/ccTNlzzK.o: in function `main':
-/home/cs261/NVMcache/memcached-1.4.34/conftest.c:32: undefined reference to `umem_cache_create'
+/usr/bin/ld: /tmp/ccBU7AOO.o: in function `main':
+/home/cs261/NVMcache/memcached-1.4.34/conftest.c:33: undefined reference to `umem_cache_create'
 collect2: error: ld returned 1 exit status
 configure:5458: $? = 1
 configure: failed program was:
@@ -484,6 +399,7 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -524,6 +440,7 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -543,8 +460,8 @@ configure: failed program was:
 configure:5475: result: no
 configure:5483: checking for library containing gethugepagesizes
 configure:5514: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
-/usr/bin/ld: /tmp/ccyUSmeT.o: in function `main':
-/home/cs261/NVMcache/memcached-1.4.34/conftest.c:32: undefined reference to `gethugepagesizes'
+/usr/bin/ld: /tmp/cc171GKW.o: in function `main':
+/home/cs261/NVMcache/memcached-1.4.34/conftest.c:33: undefined reference to `gethugepagesizes'
 collect2: error: ld returned 1 exit status
 configure:5514: $? = 1
 configure: failed program was:
@@ -567,6 +484,7 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -607,6 +525,7 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -633,8 +552,8 @@ configure:5616: gcc -c -g -O2 -pthread -pthread  conftest.c >&5
 configure:5616: $? = 0
 configure:5616: gcc -c -g -O2 -pthread -pthread  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:57:20: error: expected expression before ')' token
-   57 | if (sizeof ((_Bool)))
+conftest.c:58:20: error: expected expression before ')' token
+   58 | if (sizeof ((_Bool)))
       |                    ^
 configure:5616: $? = 1
 configure: failed program was:
@@ -657,6 +576,7 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
 | #ifdef HAVE_SYS_TYPES_H
@@ -704,51 +624,8 @@ configure:5637: checking for inttypes.h
 configure:5637: result: yes
 configure:5652: checking for sasl_callback_ft
 configure:5676: gcc -c -g -O2 -pthread -pthread  conftest.c >&5
-conftest.c: In function 'main':
-conftest.c:34:5: error: unknown type name 'sasl_callback_ft'
-   34 |     sasl_callback_ft a_callback;
-      |     ^~~~~~~~~~~~~~~~
-configure:5676: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "memcached"
-| #define PACKAGE_TARNAME "memcached"
-| #define PACKAGE_VERSION "1.4.34"
-| #define PACKAGE_STRING "memcached 1.4.34"
-| #define PACKAGE_BUGREPORT "memcached@googlegroups.com"
-| #define PACKAGE_URL ""
-| #define PACKAGE "memcached"
-| #define VERSION "1.4.34"
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| #define HAVE__BOOL 1
-| #define HAVE_STDBOOL_H 1
-| #define HAVE_INTTYPES_H 1
-| /* end confdefs.h.  */
-| 
-|     #ifdef HAVE_SASL_SASL_H
-|     #include <sasl/sasl.h>
-|     #include <sasl/saslplug.h>
-|     #endif
-| 
-| int
-| main ()
-| {
-| 
-|     sasl_callback_ft a_callback;
-| 
-|   ;
-|   return 0;
-| }
-configure:5688: result: no
+configure:5676: $? = 0
+configure:5688: result: yes
 configure:5700: checking for print macros for integers (C99 section 7.8.1)
 configure:5724: gcc -c -g -O2 -pthread -pthread  conftest.c >&5
 configure:5724: $? = 0
@@ -764,10 +641,10 @@ configure:5866: result: yes
 configure:5877: checking for endianness
 configure:5904: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
 conftest.c: In function 'main':
-conftest.c:30:9: warning: implicit declaration of function 'exit' [-Wimplicit-function-declaration]
-   30 |         exit(*c == 1);
+conftest.c:32:9: warning: implicit declaration of function 'exit' [-Wimplicit-function-declaration]
+   32 |         exit(*c == 1);
       |         ^~~~
-conftest.c:30:9: warning: incompatible implicit declaration of built-in function 'exit'
+conftest.c:32:9: warning: incompatible implicit declaration of built-in function 'exit'
 conftest.c:1:1: note: include '<stdlib.h>' or provide a declaration of 'exit'
   +++ |+#include <stdlib.h>
     1 | /* confdefs.h */
@@ -795,9 +672,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | /* end confdefs.h.  */
 | 
 | int
@@ -814,16 +693,16 @@ configure: failed program was:
 configure:5919: result: little
 configure:5936: checking for htonll
 configure:5958: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
-conftest.c:29:23: warning: extra tokens at end of #include directive
-   29 | #include <inttypes.h> */
+conftest.c:31:23: warning: extra tokens at end of #include directive
+   31 | #include <inttypes.h> */
       |                       ^
 conftest.c: In function 'main':
-conftest.c:36:18: warning: implicit declaration of function 'htonll'; did you mean 'htonl'? [-Wimplicit-function-declaration]
-   36 |           return htonll(0);
+conftest.c:38:18: warning: implicit declaration of function 'htonll'; did you mean 'htonl'? [-Wimplicit-function-declaration]
+   38 |           return htonll(0);
       |                  ^~~~~~
       |                  htonl
-/usr/bin/ld: /tmp/ccw4ieff.o: in function `main':
-/home/cs261/NVMcache/memcached-1.4.34/conftest.c:36: undefined reference to `htonll'
+/usr/bin/ld: /tmp/cc6EGTa2.o: in function `main':
+/home/cs261/NVMcache/memcached-1.4.34/conftest.c:38: undefined reference to `htonll'
 collect2: error: ld returned 1 exit status
 configure:5958: $? = 1
 configure: failed program was:
@@ -846,9 +725,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | /* end confdefs.h.  */
 | 
@@ -878,8 +759,8 @@ configure:6039: $? = 0
 configure:6039: result: yes
 configure:6050: checking for getpagesizes
 configure:6050: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
-/usr/bin/ld: /tmp/cc3CmncV.o: in function `main':
-/home/cs261/NVMcache/memcached-1.4.34/conftest.c:60: undefined reference to `getpagesizes'
+/usr/bin/ld: /tmp/ccUrSzHM.o: in function `main':
+/home/cs261/NVMcache/memcached-1.4.34/conftest.c:62: undefined reference to `getpagesizes'
 collect2: error: ld returned 1 exit status
 configure:6050: $? = 1
 configure: failed program was:
@@ -902,9 +783,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | #define HAVE_MLOCKALL 1
 | /* end confdefs.h.  */
@@ -949,8 +832,8 @@ configure: failed program was:
 configure:6050: result: no
 configure:6061: checking for memcntl
 configure:6061: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
-/usr/bin/ld: /tmp/ccUp75FY.o: in function `main':
-/home/cs261/NVMcache/memcached-1.4.34/conftest.c:60: undefined reference to `memcntl'
+/usr/bin/ld: /tmp/cckICoJN.o: in function `main':
+/home/cs261/NVMcache/memcached-1.4.34/conftest.c:62: undefined reference to `memcntl'
 collect2: error: ld returned 1 exit status
 configure:6061: $? = 1
 configure: failed program was:
@@ -973,9 +856,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | #define HAVE_MLOCKALL 1
 | /* end confdefs.h.  */
@@ -1043,11 +928,11 @@ configure:6205: result: yes
 configure:6209: checking for GCC 64bit atomics
 configure:6227: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
 conftest.c: In function 'main':
-conftest.c:36:3: error: unknown type name 'uint64_t'
-   36 |   uint64_t a;
+conftest.c:38:3: error: unknown type name 'uint64_t'
+   38 |   uint64_t a;
       |   ^~~~~~~~
-conftest.c:37:3: error: unknown type name 'uint64_t'
-   37 |   uint64_t b;
+conftest.c:39:3: error: unknown type name 'uint64_t'
+   39 |   uint64_t b;
       |   ^~~~~~~~
 configure:6227: $? = 1
 configure: failed program was:
@@ -1070,9 +955,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | #define HAVE_MLOCKALL 1
 | #define HAVE_SIGIGNORE 1
@@ -1097,8 +984,8 @@ configure: failed program was:
 configure:6235: result: no
 configure:6240: checking for setppriv
 configure:6240: gcc -o conftest -g -O2 -pthread -pthread   conftest.c -levent  >&5
-/usr/bin/ld: /tmp/ccWP7uoX.o: in function `main':
-/home/cs261/NVMcache/memcached-1.4.34/conftest.c:65: undefined reference to `setppriv'
+/usr/bin/ld: /tmp/ccTzajqO.o: in function `main':
+/home/cs261/NVMcache/memcached-1.4.34/conftest.c:67: undefined reference to `setppriv'
 collect2: error: ld returned 1 exit status
 configure:6240: $? = 1
 configure: failed program was:
@@ -1121,9 +1008,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | #define HAVE_MLOCKALL 1
 | #define HAVE_SIGIGNORE 1
@@ -1173,8 +1062,8 @@ configure: failed program was:
 configure:6240: result: no
 configure:6271: checking umem.h usability
 configure:6271: gcc -c -g -O2 -pthread -pthread  conftest.c >&5
-conftest.c:64:10: fatal error: umem.h: No such file or directory
-   64 | #include <umem.h>
+conftest.c:66:10: fatal error: umem.h: No such file or directory
+   66 | #include <umem.h>
       |          ^~~~~~~~
 compilation terminated.
 configure:6271: $? = 1
@@ -1198,9 +1087,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | #define HAVE_MLOCKALL 1
 | #define HAVE_SIGIGNORE 1
@@ -1246,8 +1137,8 @@ configure: failed program was:
 configure:6271: result: no
 configure:6271: checking umem.h presence
 configure:6271: gcc -E  conftest.c
-conftest.c:31:10: fatal error: umem.h: No such file or directory
-   31 | #include <umem.h>
+conftest.c:33:10: fatal error: umem.h: No such file or directory
+   33 | #include <umem.h>
       |          ^~~~~~~~
 compilation terminated.
 configure:6271: $? = 1
@@ -1271,9 +1162,11 @@ configure: failed program was:
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_STDINT_H 1
 | #define HAVE_UNISTD_H 1
+| #define HAVE_SASL_SASL_H 1
 | #define HAVE__BOOL 1
 | #define HAVE_STDBOOL_H 1
 | #define HAVE_INTTYPES_H 1
+| #define HAVE_SASL_CALLBACK_FT 1
 | #define ENDIAN_LITTLE 1
 | #define HAVE_MLOCKALL 1
 | #define HAVE_SIGIGNORE 1
@@ -1309,10 +1202,10 @@ generated by GNU Autoconf 2.69.  Invocation command line was
 
 on Titan
 
-config.status:889: creating Makefile
-config.status:889: creating doc/Makefile
-config.status:889: creating config.h
-config.status:1118: executing depfiles commands
+config.status:891: creating Makefile
+config.status:891: creating doc/Makefile
+config.status:891: creating config.h
+config.status:1120: executing depfiles commands
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -1350,11 +1243,11 @@ ac_cv_func_memcntl=no
 ac_cv_func_mlockall=yes
 ac_cv_func_setppriv=no
 ac_cv_func_sigignore=yes
-ac_cv_has_sasl_callback_ft=no
+ac_cv_has_sasl_callback_ft=yes
 ac_cv_have_decl___SUNPRO_C=no
 ac_cv_header_inttypes_h=yes
 ac_cv_header_memory_h=yes
-ac_cv_header_sasl_sasl_h=no
+ac_cv_header_sasl_sasl_h=yes
 ac_cv_header_stdbool_h=yes
 ac_cv_header_stdc=yes
 ac_cv_header_stdint_h=yes
@@ -1540,9 +1433,11 @@ target_alias=''
 #define HAVE_INTTYPES_H 1
 #define HAVE_STDINT_H 1
 #define HAVE_UNISTD_H 1
+#define HAVE_SASL_SASL_H 1
 #define HAVE__BOOL 1
 #define HAVE_STDBOOL_H 1
 #define HAVE_INTTYPES_H 1
+#define HAVE_SASL_CALLBACK_FT 1
 #define ENDIAN_LITTLE 1
 #define HAVE_MLOCKALL 1
 #define HAVE_SIGIGNORE 1
